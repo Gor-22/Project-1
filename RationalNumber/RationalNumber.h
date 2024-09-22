@@ -27,13 +27,13 @@ namespace numbers
 
 	template <IntegralValue T>
 	T calculate_gcd(T first, T second) {
-		// Отбрасываем знак
+		// ГЋГІГЎГ°Г Г±Г»ГўГ ГҐГ¬ Г§Г­Г ГЄ
 		first = first < 0 ? -(signed)first : first;
 		second = second < 0 ? -(signed)second : second;
 
 		if (first == 0 || second == 0) return 1;
 
-		// Определение НОД по алгоритму Евклида через остаток от деления
+		// ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЌГЋГ„ ГЇГ® Г Г«ГЈГ®Г°ГЁГІГ¬Гі Г…ГўГЄГ«ГЁГ¤Г  Г·ГҐГ°ГҐГ§ Г®Г±ГІГ ГІГ®ГЄ Г®ГІ Г¤ГҐГ«ГҐГ­ГЁГї
 		while (first != second) {
 			if (first > second) first %= second;
 			else second %= first;
@@ -63,7 +63,7 @@ namespace numbers
 		RationalNumber(RationalNumber<T>& other);
 	
 
-		// Сложение
+		// Г‘Г«Г®Г¦ГҐГ­ГЁГҐ
 		RationalNumber<T> operator+(RationalNumber<T>& other);
 
 		template<IntegralValue T>
@@ -83,7 +83,7 @@ namespace numbers
 		RationalNumber<T> operator++(int);
 
 
-		// Вычитание
+		// Г‚Г»Г·ГЁГІГ Г­ГЁГҐ
 		RationalNumber<T> operator-(RationalNumber<T>& other);
 
 		template<IntegralValue T>
@@ -103,7 +103,7 @@ namespace numbers
 		RationalNumber<T> operator--(int);
 
 
-		// Умножение
+		// Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ
 		RationalNumber<T> operator*(RationalNumber<T>& other);
 
 		RationalNumber& operator*=(RationalNumber<T>& other);
@@ -115,7 +115,7 @@ namespace numbers
 		friend RationalNumber<T> operator*(int left, RationalNumber<T>& right);
 
 
-		// Деление
+		// Г„ГҐГ«ГҐГ­ГЁГҐ
 		RationalNumber<T> operator/(RationalNumber<T>& other);
 
 		RationalNumber& operator/=(RationalNumber<T>& other);
@@ -128,14 +128,14 @@ namespace numbers
 		template<IntegralValue T>
 		friend RationalNumber<T> operator/(T left, RationalNumber<T>& right);
 
-		// Переопределение потоков ввода / вывода
+		// ГЏГҐГ°ГҐГ®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ®ГІГ®ГЄГ®Гў ГўГўГ®Г¤Г  / ГўГ»ГўГ®Г¤Г 
 		template<IntegralValue T>
 		friend std::ostream& operator<<(std::ostream& out, const RationalNumber<T>& number);
 
 		template<IntegralValue T>
 		friend std::istream& operator>>(std::istream& in, RationalNumber<T>& number);
 	
-		// Операции сравнения
+		// ГЋГЇГҐГ°Г Г¶ГЁГЁ Г±Г°Г ГўГ­ГҐГ­ГЁГї
 		bool operator>(RationalNumber<T>& other);
 
 		bool operator<(RationalNumber<T>& other);
@@ -150,7 +150,7 @@ namespace numbers
 
 		bool operator<=(RationalNumber<T>& other);
 
-		// Перевод типов
+		// ГЏГҐГ°ГҐГўГ®Г¤ ГІГЁГЇГ®Гў
 		operator int();
 
 		operator float();
@@ -205,7 +205,7 @@ namespace numbers
 	}
 
 
-	// Сложение
+	// Г‘Г«Г®Г¦ГҐГ­ГЁГҐ
 	template<IntegralValue T>
 	RationalNumber<T> RationalNumber<T>::operator+(RationalNumber<T>& other) {
 		T outerMultiplyier = calculate_gcd(m_numerator, other.m_numerator);
@@ -261,7 +261,7 @@ namespace numbers
 		return old_value;
 	}
 
-	// Вычитание
+	// Г‚Г»Г·ГЁГІГ Г­ГЁГҐ
 
 	template<IntegralValue T>
 	RationalNumber<T> RationalNumber<T>::operator-(RationalNumber<T>& other)
@@ -311,7 +311,7 @@ namespace numbers
 		return old_value;
 	}
 
-	// Умножение
+	// Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ
 	template<IntegralValue T>
 	RationalNumber<T> RationalNumber<T>::operator*(RationalNumber<T>& other) {
 		// from left up to right down
@@ -355,7 +355,7 @@ namespace numbers
 		);
 	}
 
-	// Деление
+	// Г„ГҐГ«ГҐГ­ГЁГҐ
 	template<IntegralValue T>
 	RationalNumber<T> RationalNumber<T>::operator/(RationalNumber<T>& other) {
 		return RationalNumber<T>(
@@ -398,7 +398,7 @@ namespace numbers
 	}
 
 
-	// Переопределение потоков ввода / вывода
+	// ГЏГҐГ°ГҐГ®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ®ГІГ®ГЄГ®Гў ГўГўГ®Г¤Г  / ГўГ»ГўГ®Г¤Г 
 	template<IntegralValue T>
 	std::ostream& operator<<(std::ostream& out, const RationalNumber<T>& number) {
 		return out << number.m_numerator << '/' << number.m_denominator;
@@ -414,7 +414,7 @@ namespace numbers
 	}
 
 
-	// Сравнение
+	// Г‘Г°Г ГўГ­ГҐГ­ГЁГҐ
 	
 	template<IntegralValue T>
 	bool RationalNumber<T>::operator>(RationalNumber<T>& other) {
@@ -451,7 +451,7 @@ namespace numbers
 		return (m_numerator * other.m_denominator) <= (other.m_numerator * m_denominator);
 	}
 
-	// Перевод типов
+	// ГЏГҐГ°ГҐГўГ®Г¤ ГІГЁГЇГ®Гў
 	template<IntegralValue T>
 	RationalNumber<T>::operator int() {
 		return m_numerator / m_denominator;
@@ -470,15 +470,14 @@ namespace numbers
 }
 
 
-// Чтобы избежать проблем с переполнением, 
-// я бы подумал о добавлении поддержки целых чисел,
-// которые могут увеличиваться по мере необходимости.
-// Также я бы подумал о добавлении возможности преобразования из float, double,
-// и других типов в рациональное число.
+// Р§С‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РїСЂРѕР±Р»РµРј СЃ РїРµСЂРµРїРѕР»РЅРµРЅРёРµРј, 
+// СЏ Р±С‹ РїРѕРґСѓРјР°Р» Рѕ РґРѕР±Р°РІР»РµРЅРёРё РїРѕРґРґРµСЂР¶РєРё С†РµР»С‹С… С‡РёСЃРµР»,
+// РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ СѓРІРµР»РёС‡РёРІР°С‚СЊСЃСЏ РїРѕ РјРµСЂРµ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё.
+// РўР°РєР¶Рµ СЏ Р±С‹ РїРѕРґСѓРјР°Р» Рѕ РґРѕР±Р°РІР»РµРЅРёРё РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РёР· float, double,
+// Рё РґСЂСѓРіРёС… С‚РёРїРѕРІ РІ СЂР°С†РёРѕРЅР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ.
 // 
 // 
-// В некоторых случаях я мог бы рассмотреть возможность использования улучшенного класса рациональных чисел,
-// например, в тех сферах, где критически важны точные вычисления.
-// Улучшение было бы за счет использования таких типов данных, как float_128. 
-
+// Р’ РЅРµРєРѕС‚РѕСЂС‹С… СЃР»СѓС‡Р°СЏС… СЏ РјРѕРі Р±С‹ СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ СѓР»СѓС‡С€РµРЅРЅРѕРіРѕ РєР»Р°СЃСЃР° СЂР°С†РёРѕРЅР°Р»СЊРЅС‹С… С‡РёСЃРµР»,
+// РЅР°РїСЂРёРјРµСЂ, РІ С‚РµС… СЃС„РµСЂР°С…, РіРґРµ РєСЂРёС‚РёС‡РµСЃРєРё РІР°Р¶РЅС‹ С‚РѕС‡РЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ.
+// РЈР»СѓС‡С€РµРЅРёРµ Р±С‹Р»Рѕ Р±С‹ Р·Р° СЃС‡РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ С‚Р°РєРёС… С‚РёРїРѕРІ РґР°РЅРЅС‹С…, РєР°Рє float_128. 
 
